@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: darkred;
+}
+
+main {
+    background-color: white;
+    width: 70%;
+    margin: 0 auto 1rem auto;
+    padding: 0 1rem 2rem 1rem;
+}
+
+header {
+    background-color: lightgray;
+    padding: 2rem 1rem;
+}
+
+header img {
+    float: right;
+    max-width: 200px;
+}
+
+header h1 {
+    color: darkgreen;
+    font-weight: 600;
+    font-size: 3.5rem;
+}
+
+#main-button {
+    border: none;
+    background-color: darkgreen;
+    text-decoration: none;
+    color: white;
+    border-radius: 0.25rem;
+    padding: .5rem .75rem;
+}
+
+#tagline {
+    font-size: 1rem;
+}
+
+fieldset {
+    border: 1px solid darkgreen;
+    padding: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+legend {
+    color: darkgreen;
+    font-variant: small-caps;
+    font-size: 1.5rem;
+    padding-left: 1rem;
+}

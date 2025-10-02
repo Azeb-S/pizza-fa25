@@ -1,6 +1,17 @@
+/* The asterisk is the universal selector
+ * box-sizing: border-box; ensures that the
+ * element's content, padding, and border
+ * are all included in the width and height.
+ * Useful for responsive layouts.
+ */
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background-color: darkred;
 }
 
@@ -42,7 +53,8 @@ header h1 {
 
 fieldset {
     border: 1px solid darkgreen;
-    padding: 1rem;
+    padding: .5rem;
+    /* display: block; */
     margin-bottom: 1.2rem;
 }
 
@@ -51,4 +63,8 @@ legend {
     font-variant: small-caps;
     font-size: 1.5rem;
     padding-left: 1rem;
+}
+
+form {
+    appearance: auto;
 }

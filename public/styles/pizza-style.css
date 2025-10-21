@@ -65,6 +65,11 @@ legend {
     padding-left: 1rem;
 }
 
+.error {
+    color: darkred;
+    display: none;
+}
+
 form {
     appearance: auto;
 }

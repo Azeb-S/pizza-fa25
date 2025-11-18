@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papa's Pizza</title>
+    <!-- !Faviocn -->
+    <link rel="icon" href="images/pizzaIcon.png">
+    <!-- Link to style sheet -->
+    <link rel="stylesheet" href="styles/pizza-style.css">
+
+    <!-- jquery css -->
+    <link rel="stylesheet" href="//cdn.datatables.net/2.3.4/css/dataTables.dataTables.min.css">
+
+    <!-- Link to JavaScript-->
+    <script src="js/pizza.js" defer></script>
+    <!-- jquery -->
+    <script src="//cdn.datatables.net/2.3.4/js/dataTables.min.js" defer></script>
+    <script src="https://cdn.datatables.net/2.3.4/js/dataTables.js" defer></script>
+
+
+</head>
+
+<body>
+    <main>
+        <header>
+            <img src="images/pizzaman.jpeg" alt="Image of pizza guy">
+            <h1>Papa's Pizza</h1>
+            <p id="tagline">The best pizza GRC students have ever tasted!</p>
+            <hr>
+            <p>The best pizza is the perfect balance of crispy crust, rich tomato sauce, and gooey, melted cheese. Whether topped with classic pepperoni, fresh basil, or gourmet ingredients, each bite is a mix of comforting flavors and textures. It’s simple,
+                delicious, and always satisfying.</p>
+            <a id="main-button" href="/contact-us" role="button">Contact us</a>
+        </header>
+        <form id="pizza-form" action="submit-order" method="post">
+            <!-- contact info -->
+            <fieldset>
+
+                <legend>Contact Info</legend>
+                <pre>
+   <label for="fname">First Name:</label>
+   <input type="text" id="fname" name="fname">
+   <span id="err-fname" class="error">Name cannot be empty</span>
+                
+   <label for="lname">Last Name:</label>
+   <input type="text" id="lname" name="lname">
+   <span id="err-lname" class="error">Name cannot be empty</span>
+
+                
+   <label for="email">Email:  </label>
+   <input type="text" id="email" name="email">
+   <span id="err-email" class="error">Name cannot be empty</span>
+
+                </pre>
+            </fieldset>
+
+            <fieldset>
+
+                <legend>Select Pickup or Delivery</legend>
+                <label for="pickup">  
+                <input type="radio" id="pickup" name="method" value="pickup"> Pickup
+                </label>
+                <label for="delivery">  
+                <input type="radio" id="delivery" name="method" value="delivery"> Delivery
+                </label>
+            </fieldset>
+
+            </fieldset>
+            <fieldset>
+
+                <legend>Select Toppings</legend>
+                <label for="pepperoni">
+                <input type="checkbox" id="pepperoni" name="toppings[]" value="pepperoni" > Pepperoni
+                </label>
+                <label for="pineapple">
+                <input type="checkbox" id="pineapplei" name="toppings[]" value="pineapple" > Pineapple
+                </label>
+                <label for="chees">
+                <input type="checkbox" id="chees" name="toppings[]" value="chees" > Chees
+                </label>
+            </fieldset>
+            <fieldset>
+
+                <legend>Pizza Size</legend>
+                <label for="size">
+                    <select id="size" name="size">
+                        <option value="none"> --Select size--</option>
+                        <option value="small"> Small</option>
+                        <option value="midium"> Midium</option>
+                        <option value="large"> Large</option>
+                    </select>
+
+                </label>
+            </fieldset>
+
+
+            <!-- Add submit button -->
+            <button type="submit">Place Order</button>
+
+        </form>
+        <main>
+            <script defer>
+                let table = new DataTable('#order-table');
+            </script>
+</body>
+
+</html>

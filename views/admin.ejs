@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papa's Pizza</title>
+    <!-- !Faviocn -->
+    <link rel="icon" href="images/pizzaIcon.png">
+    <!-- Link to style sheet -->
+    <link rel="stylesheet" href="styles/pizza-style.css">
+    <!-- Link to JavaScript-->
+    <script src="js/pizza.js" defer></script>
+</head>
+
+<body>
+    <main>
+        <header>
+            <img src="images/pizzaman.jpeg" alt="Image of pizza guy">
+            <h1>Papa's Pizza</h1>
+            <p id="tagline">The best pizza GRC students have ever tasted!</p>
+            <hr>
+            <p>The best pizza is the perfect balance of crispy crust, rich tomato sauce, and gooey, melted cheese. Whether topped with classic pepperoni, fresh basil, or gourmet ingredients, each bite is a mix of comforting flavors and textures. It’s simple,
+                delicious, and always satisfying.</p>
+            <a id="main-button" href="#" role="button">Contact us</a>
+        </header>
+        <h1>Admin Page</h1>
+        <table id="order-table" class="display">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Topping</th>
+                    <th>Size</th>
+                    <th>Date/Time</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <!-- <% let order = orders[0]%> -->
+                <%orders.forEach(order => { %>
+                    <tr>
+                        <td>
+                            <%= order.fname %>
+                                <%= order.lname %>
+                        </td>
+                        <td>
+                            <%= order.email %>
+                        </td>
+                        <td>
+                            <%= order.method %>
+                        </td>
+                        <td>
+                            <%= order.size %>
+                        </td>
+                        <td>
+                            <%= order.timestamp.toLocaleString() %>
+                        </td>
+                    </tr>
+                    <%});
+                    %>
+            </tbody>
+        </table>
+
+        <main>
+
+            <a id="main-button" href="/" role="button">Place an order</a>
+</body>
+
+</html>

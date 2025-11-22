@@ -28,6 +28,7 @@ app.get('/db-test', async (req, res) => {
   res.send(orders)
  } catch (err) {
   console.error('Database error:', err)
+
  }
 })
 
@@ -42,9 +43,15 @@ app.use(express.urlencoded({ extended: true }))
 
 const orders = []
 
-//app.get('/', (req, res) => {
-//res.send('Welcome to Poppa\'s Pizza!')
-//define a default route (/)
+app.get('/db-test', async (req, res) => {
+ try {
+  const [orderes] = await pool.query('SELECT * FROM orders')
+  res.send(orderes)
+ } catch (err) {
+  console.error('Database error: ', err)
+ }
+})
+
 app.get('/', (req, res) => {
  //res.sendFile(`${import.meta.dirname}/views/home.html`)
  res.render('home')
@@ -54,28 +61,46 @@ app.get('/contact-us', (req, res) => {
  //res.sendFile(`${import.meta.dirname}/views/contact.html`)
  res.render('contact')
 })
-
-//Define cconfirmation us route
-app.get('/confirm', (req, res) => {
-
- //res.sendFile(`${import.meta.dirname}/views/confirmation.html`)
- res.render('confirmation')
-})
-
 //Define Admin route
 app.get('/admin', async (req, res) => {
  //res.send(orders)
  try {
-  const [orders] = await pool.query('SELECT * FROM orders')
+  const [orders] = await pool.query('SELECT * FROM orders ORDER BY timestamp DESC')
   res.render('admin', { orders })
  } catch (err) {
   console.error('Database error:', err)
  }
-
-
- //  res.sendFile(`${import.meta.dirname}/views/admin.html`)
 })
+//Define cconfirmation us route
+app.post('/confirm', async (req, res) => {
+ const order = req.body
+ order.timestamp = new Date()
 
+ //Write a query to insert order into DB
+ const sql = "INSERT INTO orders (fname, lname, email, size, method, toppings, timestamp) VALUES (?, ?, ?, ?, ?, ?, ?)"
+
+ console.log(order)
+ // Create array of parameters for each placeholder
+ const params = [
+  order.fname,
+  order.lname,
+  order.email,
+  order.size,
+  order.method,
+  order.toppings,
+  order.timestamp
+ ]
+ try {
+  const [result] = await pool.execute(sql, params)
+
+  //Send user to comfirmation page
+  res.render('confirmation', { order })
+
+ } catch (err) {
+  console.log("Database Error")
+ }
+
+})
 
 app.listen(PORT, () => {
  console.log(`Server is running at http://localhost:${PORT}`)
